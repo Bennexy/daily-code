@@ -1,12 +1,14 @@
 
 import os
 import sys
+import warnings
 from flask_login import LoginManager, login_manager
 from flask_migrate import Migrate
 from flask_mail import Mail
 from werkzeug.contrib.fixers import ProxyFix
 
 sys.path.append('.')
+warnings.filterwarnings('ignore')
 
 
 from daily_code.app_initializer import *
@@ -14,7 +16,7 @@ from daily_code.app_initializer import *
 
 app = create_app_load_configurations()
 app.wsgi_app = ProxyFix(app.wsgi_app)
-print(app)
+
 # setup login manager
 login = init_login_manager(app)
 login_manager = login
@@ -37,7 +39,7 @@ import daily_code.routes
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", debug=True)
 
 
 

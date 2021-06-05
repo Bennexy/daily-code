@@ -2,7 +2,7 @@ import sys
 from flask_sitemap import Sitemap
 from flask import render_template
 sys.path.append('.')
-from app import app
+from daily_code import app
 from daily_code.core.routes import core
 
 app.register_blueprint(core)
