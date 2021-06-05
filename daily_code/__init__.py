@@ -18,17 +18,7 @@ from daily_code.app_initializer import *
 app = create_app_load_configurations()
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-# setup login manager
-#login = init_login_manager(app)
-#login_manager = login
 
-#@login_manager.load_user
-#def load_user(user):
-#    return User.get(user)
-
-# setup db
-# db = init_db(app)
-# migrate = Migrate(app, db)
 
 # setup mail
 mail = Mail(app)
