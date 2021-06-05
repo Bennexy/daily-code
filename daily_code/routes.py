@@ -6,14 +6,14 @@ from daily_code import app
 
 
 
-@app.route("/")
-def index():
-    return("im the base page and im running!")
+#@app.route("/")
+#def index():
+#    return("im the base page and im running!")
 
-# @app.errorhandler(404)
-# def not_found_error(error):
-#     return "this site does not exsist", 404
-#     # return render_template("public/404.html"), 404
+@app.errorhandler(404)
+def not_found_error(error):
+    return "this site does not exsist", 404
+     # return render_template("public/404.html"), 404
 
 from daily_code.core.routes import core
 app.register_blueprint(core)
