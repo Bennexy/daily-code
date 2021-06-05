@@ -3,10 +3,13 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_env import MetaFlaskEnv
-
-import app.config as app_config
-
 import os
+import sys
+sys.path.append('.')
+
+import daily_code.config as app_config
+
+
 
 
 def load_configurations_file():
@@ -22,7 +25,7 @@ def create_app_load_configurations():
     # load_configurations_file()
     app = Flask(__name__, static_folder="static", static_url_path="/static/")
     
-    app.config.from_object("app.config")
+    app.config.from_object("daily_code.config")
     app.secret_key = app_config.SECRET_KEY
     app.application_name = app_config.APPLICATION_NAME
     

@@ -9,7 +9,7 @@ from werkzeug.contrib.fixers import ProxyFix
 sys.path.append('.')
 
 
-from app.app_initializer import *
+from daily_code.app_initializer import *
 
 
 app = create_app_load_configurations()

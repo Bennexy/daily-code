@@ -1,7 +1,7 @@
 import sys
 sys.path.append(".")
 
-from app.logger import get_logger
+from daily_code.logger import get_logger
 from flask import Blueprint, render_template, request
 
 

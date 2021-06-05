@@ -3,7 +3,7 @@ from flask_sitemap import Sitemap
 from flask import render_template
 sys.path.append('.')
 from app import app
-from app.core.routes import core
+from daily_code.core.routes import core
 
 app.register_blueprint(core)
 
@@ -13,7 +13,7 @@ def not_found_error(error):
     return "this site does not exsist", 404
     # return render_template("public/404.html"), 404
 
-from app.core.routes import core
+from daily_code.core.routes import core
 app.register_blueprint(core)
 
 

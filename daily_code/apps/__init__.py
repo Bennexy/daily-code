@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append('.')
 from app import app
-from app.apps.corona import blueprint as corona
+from daily_code.apps.corona import blueprint as corona
 
 
 

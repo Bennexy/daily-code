@@ -12,7 +12,7 @@ sys.path.append('.')
 
 from app import config as app_config
 from app import db
-from app.logger import get_logger
+from daily_code.logger import get_logger
 
 logger = get_logger("core-models")
 

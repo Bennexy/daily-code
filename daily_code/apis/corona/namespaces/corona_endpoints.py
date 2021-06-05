@@ -3,8 +3,8 @@ import requests
 from flask_restx import Namespace, Resource
 from flask import json, jsonify, request
 sys.path.append('.')
-from app.logger import get_logger
-from app.apis.corona import api
+from daily_code.logger import get_logger
+from daily_code.apis.corona import api
 
 
 
