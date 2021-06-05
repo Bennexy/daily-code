@@ -31,9 +31,9 @@ mail = Mail(app)
 
 
 
-import app.apis
-import app.apps
-import app.routes
+import daily_code.apis
+import daily_code.apps
+import daily_code.routes
 
 
 if __name__ == "__main__":
