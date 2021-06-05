@@ -32,7 +32,6 @@ mail = Mail(app)
 
 
 
-
 import daily_code.apis
 import daily_code.apps
 import daily_code.routes
