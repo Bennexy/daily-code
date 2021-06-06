@@ -7,12 +7,14 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "cloudintegration",
+                "FLASK_APP": "daily_code",
                 "FLASK_ENV": "development",
                 "FLASK_DEBUG": "1"
             },
             "args": [
                 "run",
+                "-p",
+                "8000"
             ],
             "jinja": true
         },
