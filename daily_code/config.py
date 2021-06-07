@@ -12,3 +12,10 @@ SQLALCHEMY_DATABASE_URI = env('SQLALCHEMY_DATABASE_URI')
 APPLICATION_NAME = env('APPLICATION_NAME')
 CoronaServerUrl = env("CoronaServerUrl")
 
+
+
+DB = env("DB")
+DB_PORT = env('DB_PORT')
+DB_USER = env('DB_USER')
+DB_PASSWORD = env('DB_PASSWORD')
+

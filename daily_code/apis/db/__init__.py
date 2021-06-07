@@ -25,7 +25,7 @@ api = MyApi(
     description="Corona api",
 )
 
-from daily_code.apis.db.namespaces.endpoints import namespace as namespace_weather
+from daily_code.apis.db.namespaces.endpoints import namespace as namespace_db
 
 
-api.add_namespace(namespace_weather, path='/db')
+api.add_namespace(namespace_db, path='/db')
