@@ -25,7 +25,7 @@ corona_cursor.execute("USE DailyCode")
 def check_for_entry(ort, orttype):
     logger.debug(f'checking for ort {orttype, ort} in db')
     date = datetime.now().strftime("%Y/%m/%d")
-    corona_cursor.execute(f'SELECT * FROM CoronaData WHERE ort = {ort}, orttype = {orttype}, datum =  {date}')
+    corona_cursor.execute(f'SELECT * FROM CoronaData WHERE ortsnamen = "{ort}" AND orttype = "{orttype}" AND datum =  "{date}"')
     result = corona_cursor.fetchall()
     if result == []:
         return None
@@ -40,6 +40,6 @@ def add_entry(ortdata):
 
 
 if __name__ == '__main__':
-    print(check_for_entry(None, None))
+    print(check_for_entry("None", "None"))
     
 
