@@ -14,7 +14,7 @@ class MyApi(Api):
     @property
     def specs_url(self):
         """Monkey patch for HTTPS"""
-        scheme = "http" if "5000" in self.base_url else "https"
+        scheme = "http" if "8000" in self.base_url else "https"
         return url_for(self.endpoint("specs"), _external=True, _scheme=scheme)
 
 api = MyApi(
@@ -28,4 +28,4 @@ api = MyApi(
 from daily_code.apis.db.namespaces.endpoints import namespace as namespace_db
 
 
-api.add_namespace(namespace_db, path='/db')
+api.add_namespace(namespace_db, path='/db_upload')

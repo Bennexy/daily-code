@@ -6,6 +6,8 @@ from flask import json, jsonify, request
 sys.path.append('.')
 from daily_code.logger import get_logger
 from daily_code.apis.db import api
+from daily_code.apis.db.errors import UnknownDataType
+from daily_code.apis.db.tasks.corona_db_actions import add_entry
 
 
 
@@ -23,11 +25,29 @@ parser_in.add_argument("data", type=dict, required=True, location="form")
 class MyEndpoint(Resource):
     @namespace.doc("uploads data to db")
     def post(self):
-        payload = request.form
+        
+        try:
+            payload = request.json
+            datatype = payload['datatype']
+            data = payload['data']
+            return jsonify(message=f"recieved post to upload datatype {datatype} data {data} to db")
 
-        datatype = payload['datatype']
-        data = payload['data']
+        except KeyError as e:
+            datatype = None
+            data = None
+            logger.error(f'an KeyError has occured within the post to db api endpoint - could not provide data and datatype within payload {payload}')
+            return jsonify(f"a KeyError {e} has occured. Please provide the datatype and the data in json format")
 
-        date = datetime.datetime.now().strftime("%Y/%m/%d")
+        finally:
+            date = datetime.datetime.now().strftime("%Y/%m/%d")
+            if data != None and datatype != None:
+                
+                if datatype == "corona":
+                    logger.debug(f"uploading data of the datatype {datatype} to db")
+                    for _, data_base in data.items():
+                        for _, ort_data in data_base.items():
+                            add_entry(ort_data)
 
-        # do stuff here
+                else:
+                    logger.error(f"datatype {datatype} is not known to db api")
+                    raise UnknownDataType(f"datatype {datatype} is not known to db api")
